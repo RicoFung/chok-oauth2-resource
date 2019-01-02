@@ -31,6 +31,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
+	@Autowired
+	Environment env;
+	
 	private TokenExtractor tokenExtractor = new BearerTokenExtractor();
 	
 	@Override
@@ -62,16 +65,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 //		.antMatchers("/error").permitAll()
 		// .antMatchers("/order/**").access("#oauth2.hasScope('select') and
 		// hasRole('ROLE_USER')")
-		.antMatchers("/product/**").authenticated();// 配置order访问控制，必须认证过后才可以访问
+		.antMatchers("/product/**").authenticated();// 配置product访问控制，必须认证过后才可以访问
 		// @formatter:on
 	}
-
-//	@Autowired
-//	private OAuth2ClientProperties oAuth2ClientProperties;
-//	@Autowired
-//	private AuthorizationServerProperties authorizationServerProperties;
-	@Autowired
-	Environment env;
 
 	@Bean
 	public ResourceServerTokenServices tokenServices()
@@ -80,18 +76,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 		remoteTokenServices.setCheckTokenEndpointUrl(env.getProperty("security.oauth2.authorization.check-token-access"));
 		remoteTokenServices.setClientId(env.getProperty("security.oauth2.client.client-id"));
 		remoteTokenServices.setClientSecret(env.getProperty("security.oauth2.client.client-secret"));
-//		remoteTokenServices.setCheckTokenEndpointUrl(authorizationServerProperties.getCheckTokenAccess());
-//		remoteTokenServices.setClientId(oAuth2ClientProperties.getClientId());
-//		remoteTokenServices.setClientSecret(oAuth2ClientProperties.getClientSecret());
-//		remoteTokenServices.setAccessTokenConverter(accessTokenConverter());
 		return remoteTokenServices;
 	}
-
-//	@Bean
-//	public AccessTokenConverter accessTokenConverter()
-//	{
-//		return new DefaultAccessTokenConverter();
-//	}
 	
 //	@Override
 //	public void configure(ResourceServerSecurityConfigurer resources) throws Exception

@@ -115,7 +115,7 @@
 
 	<!-- logger -->
     <logger name="org.springframework" level="ERROR" />
-    <logger name="org.springframework.security" level="DEBUG" />
+    <logger name="org.springframework.security" level="ERROR" />
     <logger name="com.admin" level="DEBUG" />
 
     <!-- ${LOG_ROOT_LEVEL} 日志级别 -->
