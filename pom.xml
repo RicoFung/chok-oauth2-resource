@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	 <!--本Project識別-->
+	<artifactId>chok-oauth2-resource</artifactId>
+	<!--表示打包Project的型態,可能為Jar、war、ear或pom，若是使用了android 則為apk-->
+	<packaging>war</packaging>
+	<!--以下是給工具看的,主要是本Project的資訊-->
+	<name>chok-oauth2-resource</name>
+	
+	<parent>
+		<groupId>com.chok</groupId>
+		<artifactId>chok-parent</artifactId>
+		<version>1.0</version>
+		<relativePath>../chok-parent/pom.xml</relativePath>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- logback-glef 用于发送消息至graylog -->
+		<dependency><groupId>de.siegmar</groupId><artifactId>logback-gelf</artifactId></dependency>
+		<!-- 使用logback-glef需排除spring-boot-starter-logging -->
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-web</artifactId>
+		  <exclusions>
+		      <exclusion>
+		          <groupId>org.springframework.boot</groupId>
+		          <artifactId>spring-boot-starter-logging</artifactId>
+		      </exclusion>
+		  </exclusions>
+		</dependency>
+		<!-- spring-boot thymeleaf -->
+		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>
+		<!-- spring-boot-security -->
+		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>
+		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-properties-migrator</artifactId></dependency>
+		<!-- spring-boot-security oauth2 -->
+		<dependency><groupId>org.springframework.security.oauth</groupId><artifactId>spring-security-oauth2</artifactId></dependency>
+		<!-- spring-boot-security oauth2-autoconfigure -->
+        <dependency><groupId>org.springframework.security.oauth.boot</groupId><artifactId>spring-security-oauth2-autoconfigure</artifactId></dependency>
+		<!-- spring-boot druid -->
+		<dependency><groupId>com.alibaba</groupId><artifactId>druid-spring-boot-starter</artifactId></dependency>
+		<!-- db driver myql-->
+		<dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId></dependency>
+		<!-- rest-assured -->
+		<dependency><groupId>io.rest-assured</groupId><artifactId>rest-assured</artifactId></dependency>
+		<!-- chok -->
+		<dependency><groupId>com.chok</groupId><artifactId>chok-devwork</artifactId></dependency>
+	</dependencies>
+
+	<!-- maven 打包插件 -->
+	<build>
+		<finalName>chok-oauth2-resource</finalName>
+	</build>
+</project>

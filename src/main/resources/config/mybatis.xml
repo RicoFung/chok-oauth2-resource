@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置设置 -->
+	<settings>
+		<!-- 设置但JDBC类型为空时,某些驱动程序 要指定值,default: OTHER -->
+   		<setting name="jdbcTypeForNull" value="NULL"/>
+   		<!-- 使全局的映射器启用或禁用缓存。 -->
+   		<setting name="cacheEnabled" value="true" />
+	</settings>
+	<!-- 类型转换 -->
+	<typeHandlers>
+		<!-- String to NUMERIC -->
+		<typeHandler javaType="String" jdbcType="NUMERIC" handler="chok.util.mybatis.StringToNumericTypeHandler" />
+	</typeHandlers>
+</configuration>
