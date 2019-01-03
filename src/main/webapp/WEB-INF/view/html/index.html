@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>OAuth2 资源端</title>
+</head>
+<body>
+	<h1 th:text="${#servletContext.contextPath}"></h1>
+	<h1 th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd HH:mm:ss')}"></h1>
+</body>
+</html>
